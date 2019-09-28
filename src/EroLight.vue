@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="EroLight">
     <router-view/>
   </div>
 </template>
