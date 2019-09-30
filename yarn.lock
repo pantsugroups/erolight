@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@mdi/font@^4.4.95":
+  version "4.4.95"
+  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-4.4.95.tgz#4a00f46a500120714ded1524f376f7882346d3fd"
+  integrity sha512-9BSvtpDF83dQ06VmwCeXTebzZZisIf4u6d62uC53oD6bzBUEMqiQrbW+oxyFrBYn3VxttRt/MKuL/wKUV9HWmA==
+
 "@types/babel-types@*", "@types/babel-types@^7.0.0":
   version "7.0.7"
   resolved "https://registry.yarnpkg.com/@types/babel-types/-/babel-types-7.0.7.tgz#667eb1640e8039436028055737d2b9986ee336e3"
@@ -2853,6 +2858,11 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
   integrity sha1-2uRqnXj74lKSJYzB54CkHZXAN4I=
+
+flexboxgrid@^6.3.1:
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/flexboxgrid/-/flexboxgrid-6.3.1.tgz#e99898afc07b7047722bb81a958a5fba4d4e20fd"
+  integrity sha1-6ZiYr8B7cEdyK7galYpfuk1OIP0=
 
 flush-write-stream@^1.0.0:
   version "1.1.1"

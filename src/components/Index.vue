@@ -1,11 +1,17 @@
 <template lang="pug">
- div HelloWorld!
+ div
+  NavBar
+  .single-bg
 </template>
 
 <script>
+import NavBar from "@/components/NavBar";
 export default {
-  name: 'Index',
-}
+  name: "Index",
+  components: {
+    NavBar
+  }
+};
 </script>
 
 <style scoped>

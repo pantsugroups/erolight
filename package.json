@@ -10,6 +10,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@mdi/font": "^4.4.95",
+    "flexboxgrid": "^6.3.1",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "pug": "^2.0.4",
