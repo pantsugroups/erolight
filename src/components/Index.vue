@@ -4,25 +4,29 @@
   .single-bg
   .main.col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
     .row
-      .col-xs-12
+      .col-xs-12.col-sm-12.col-md-7.col-lg-8.panel
         swiper(:options="swiperOption")
             swiper-slide.slide-1(style="height:350px")
             swiper-slide.slide-2(style="height:350px")
             .swiper-pagination.swiper-pagination-white(slot="pagination")
             .swiper-button-prev.swiper-button-white(slot="button-prev")
             .swiper-button-next.swiper-button-white(slot="button-next")
+      .col-xs-12.col-sm-12.col-md-5.col-lg-4.panel
+        Personal
 </template>
 
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
 import NavBar from "@/components/NavBar";
+import Personal from "@/components/Personal";
 export default {
   name: "Index",
   components: {
     NavBar,
     swiper,
-    swiperSlide
+    swiperSlide,
+    Personal
   },
   data() {
     return {
