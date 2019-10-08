@@ -1,56 +1,78 @@
-<template lang="pug">
- div
-  NavBar
-  .single-bg
-  .main.col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
-    .row
-      .col-xs-12.col-sm-12.col-md-7.col-lg-8.panel
-        swiper(:options="swiperOption")
-            swiper-slide.slide-1(style="height:350px")
-            swiper-slide.slide-2(style="height:350px")
-            .swiper-pagination.swiper-pagination-white(slot="pagination")
-            .swiper-button-prev.swiper-button-white(slot="button-prev")
-            .swiper-button-next.swiper-button-white(slot="button-next")
-      .col-xs-12.col-sm-12.col-md-5.col-lg-4.panel
-        Personal
+<template>
+  <div>
+    <NavBar :menu="menu"></NavBar>
+    <Menu :menu="menu"></Menu>
+    <Background></Background>
+    <mu-container style="margin-top:15px;">
+      <mu-row>
+        <mu-col span="12">
+          <mu-paper class="demo-paper" :z-depth="3">
+            <Carousel></Carousel>
+          </mu-paper>
+        </mu-col>
+      </mu-row>
+    </mu-container>
+    <mu-container style="margin-top:15px;">
+      <mu-row>
+        <mu-col span="12">
+          <mu-paper class="demo-paper" :z-depth="3">
+            <mu-flex justify-content="center">
+              <h2>首页推荐</h2>
+            </mu-flex>
+          </mu-paper>
+        </mu-col>
+      </mu-row>
+    </mu-container>
+    <mu-container>
+      <mu-row gutter>
+        <mu-col :key="1" span="12" sm="12" md="6" lg="4" xl="3" v-for="n in 12" style="margin-top:15px;">
+          <mu-paper class="demo-paper" :z-depth="3">
+            <mu-card>
+              <mu-card-media title="幻兽调查员" sub-title="绫里惠史">
+                <img src="@/assets/book1.jpg" />
+              </mu-card-media>
+              <mu-card-text>
+                <mu-chip>
+                  <mu-avatar :size="32">
+                    <mu-icon value="date_range"></mu-icon>
+                  </mu-avatar>2019-07-19 21:00:22
+                </mu-chip>
+                <mu-chip>
+                  <mu-avatar :size="32">
+                    <mu-icon value="local_offer"></mu-icon>
+                  </mu-avatar>奇幻
+                </mu-chip>
+              </mu-card-text>
+              <mu-card-actions>
+                <mu-button color="secondary" full-width>详情</mu-button>
+              </mu-card-actions>
+            </mu-card>
+          </mu-paper>
+        </mu-col>
+      </mu-row>
+    </mu-container>
+  </div>
 </template>
 
 <script>
-import { swiper, swiperSlide } from "vue-awesome-swiper";
-import "swiper/dist/css/swiper.css";
-import NavBar from "@/components/NavBar";
-import Personal from "@/components/Personal";
+import Carousel from "@/components/UI/Carousel.vue";
+import Background from "@/components/UI/Background.vue";
+import NavBar from "@/components/UI/NavBar.vue";
+import Menu from "@/components/UI/Menu.vue";
 export default {
   name: "Index",
-  components: {
-    NavBar,
-    swiper,
-    swiperSlide,
-    Personal
-  },
   data() {
     return {
-      novels: [],
-      swiperOption: {
-        spaceBetween: 30,
-        effect: "fade",
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true
-        },
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
-        }
+      menu: {
+        open: false
       }
     };
+  },
+  components: {
+    NavBar,
+    Menu,
+    Carousel,
+    Background
   }
 };
 </script>
-
-<style>
-</style>
