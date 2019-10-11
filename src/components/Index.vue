@@ -44,7 +44,7 @@
                 </mu-chip>
               </mu-card-text>
               <mu-card-actions>
-                <mu-button color="secondary" full-width>详情</mu-button>
+                <mu-button color="secondary" full-width to="/archives/1">详情</mu-button>
               </mu-card-actions>
             </mu-card>
           </mu-paper>

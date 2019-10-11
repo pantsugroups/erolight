@@ -4,7 +4,7 @@
       <mu-list-item @click="menu.open = false" button>
         <mu-icon value="keyboard_arrow_left"></mu-icon>
       </mu-list-item>
-      <mu-list-item button>
+      <mu-list-item button to="/">
         <mu-list-item-title>首页</mu-list-item-title>
       </mu-list-item>
       <mu-list-item button>
