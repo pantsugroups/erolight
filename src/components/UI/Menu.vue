@@ -7,7 +7,7 @@
       <mu-list-item button to="/">
         <mu-list-item-title>首页</mu-list-item-title>
       </mu-list-item>
-      <mu-list-item button>
+      <mu-list-item button to="/query">
         <mu-list-item-title>分类</mu-list-item-title>
       </mu-list-item>
       <mu-list-item button>
