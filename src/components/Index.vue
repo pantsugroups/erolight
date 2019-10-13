@@ -60,6 +60,11 @@
         </mu-col>
       </mu-row>
     </mu-container>
+    <mu-container style="margin-top:15px;margin-bottom:15px;">
+      <mu-flex justify-content="center">
+        <mu-pagination raised circle :total="1000" :current.sync="current"></mu-pagination>
+      </mu-flex>
+    </mu-container>
   </div>
 </template>
 
@@ -74,7 +79,8 @@ export default {
     return {
       menu: {
         open: false
-      }
+      },
+      current: 1
     };
   },
   components: {
