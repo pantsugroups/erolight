@@ -30,7 +30,7 @@
           </mu-paper>
           <mu-paper class="demo-paper" :z-depth="3" style="margin-top:15px;">
             <mu-row gutter style="margin-top:15px;">
-              <mu-col span="4" sm="4" md="4" lg="3" xl="2" v-for="n in 3">
+              <mu-col :key="n" span="4" sm="4" md="4" lg="3" xl="2" v-for="n in 3">
                 <mu-card>
                   <mu-card-media sub-title="幻兽调查员[01]">
                     <img src="@/assets/book1.jpg" />
@@ -53,9 +53,7 @@
                 <h3>书评区</h3>
               </mu-flex>
             </mu-flex>
-            <p>
-              不想肝了
-            </p>
+            <p>不想肝了</p>
           </mu-paper>
         </mu-col>
       </mu-row>

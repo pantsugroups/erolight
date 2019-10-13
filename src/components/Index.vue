@@ -25,7 +25,7 @@
     </mu-container>
     <mu-container>
       <mu-row gutter>
-        <mu-col :key="1" span="12" sm="12" md="6" lg="4" xl="3" v-for="n in 12" style="margin-top:15px;">
+        <mu-col :key="n" span="12" sm="12" md="6" lg="4" xl="3" v-for="n in 12" style="margin-top:15px;">
           <mu-paper class="demo-paper" :z-depth="3">
             <mu-card>
               <mu-card-media title="幻兽调查员" sub-title="绫里惠史">
@@ -61,13 +61,7 @@ import NavBar from "@/components/UI/NavBar.vue";
 import Menu from "@/components/UI/Menu.vue";
 export default {
   name: "Index",
-  data() {
-    return {
-      menu: {
-        open: false
-      }
-    };
-  },
+  
   components: {
     NavBar,
     Menu,
