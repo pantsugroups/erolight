@@ -26,34 +26,36 @@
     <mu-container>
       <mu-row gutter>
         <mu-col
-          :key="n"
+          :key="n.id"
           span="12"
           sm="12"
           md="6"
           lg="4"
           xl="3"
-          v-for="n in 12"
+          v-for="n in novels"
           style="margin-top:15px;"
         >
           <mu-paper class="demo-paper" :z-depth="3">
             <mu-card>
-              <mu-card-media title="幻兽调查员" sub-title="绫里惠史">
-                <img src="@/assets/book1.jpg" />
+              <mu-card-media v-bind:title="n.title" v-bind:sub-title="n.author">
+                <img v-bind:src="n.cover" />
               </mu-card-media>
               <mu-card-text>
                 <mu-chip>
                   <mu-avatar :size="32">
                     <mu-icon value="date_range"></mu-icon>
-                  </mu-avatar>2019-07-19 21:00:22
+                  </mu-avatar>
+                  {{n.update_time}}
                 </mu-chip>
-                <mu-chip>
+                <mu-chip v-for="t in n.tag" :key="t">
                   <mu-avatar :size="32">
                     <mu-icon value="local_offer"></mu-icon>
-                  </mu-avatar>奇幻
+                  </mu-avatar>
+                  {{t}}
                 </mu-chip>
               </mu-card-text>
               <mu-card-actions>
-                <mu-button color="secondary" full-width to="/archives/1">详情</mu-button>
+                <mu-button color="secondary" full-width v-bind:to="'/archives/'+n.id">详情</mu-button>
               </mu-card-actions>
             </mu-card>
           </mu-paper>
@@ -62,7 +64,7 @@
     </mu-container>
     <mu-container style="margin-top:15px;margin-bottom:15px;">
       <mu-flex justify-content="center">
-        <mu-pagination raised circle :total="1000" :current.sync="current"></mu-pagination>
+        <mu-pagination raised circle :total="this.pages" :current.sync="current"></mu-pagination>
       </mu-flex>
     </mu-container>
   </div>
@@ -75,12 +77,33 @@ import NavBar from "@/components/UI/NavBar.vue";
 import Menu from "@/components/UI/Menu.vue";
 export default {
   name: "Index",
+  created() {
+    fetch(this.$config.api_base + "novel/?page="+this.current+"&paeg_size=15", {
+      method: "get",
+      credentials: "include"
+    })
+      .then(data => data.json())
+      .then(data => {
+        if (data.status === 0 && data.count != 0) {
+          data.data.forEach(element => {
+            element.update_time = new Date(parseInt(element.update_at) * 1000)
+              .toLocaleString()
+              .replace(/:\d{1,2}$/, " ");
+            element.tag = element.tags.split("/");
+            this.novels.push(element);
+          });
+          this.pages = data.pages;
+        }
+      });
+  },
   data() {
     return {
       menu: {
         open: false
       },
-      current: 1
+      novels: [],
+      current: 1,
+      pages:"",
     };
   },
   components: {

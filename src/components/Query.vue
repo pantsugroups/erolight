@@ -18,7 +18,7 @@
               </mu-form-item>
             </mu-col>
           </mu-row>
-          <mu-row>
+          <!-- <mu-row>
             <mu-col span="8" offset="2">
               <mu-form-item prop="radio" label="单选">
                 <mu-radio v-model="form.radio" value="1" label="选项1"></mu-radio>
@@ -35,7 +35,7 @@
                 <mu-checkbox v-model="form.checkbox" value="4" label="多选4"></mu-checkbox>
               </mu-form-item>
             </mu-col>
-          </mu-row>
+          </mu-row> -->
         </mu-form>
       </mu-paper>
     </mu-container>
