@@ -3,7 +3,7 @@
     <NavBar :menu="menu"></NavBar>
     <Menu :menu="menu"></Menu>
     <Background></Background>
-    <mu-container>
+    <mu-container style="padding-bottom:30px;">
       <mu-row gutter style="margin-top:15px;">
         <mu-col span="12" sm="12" md="6" lg="4" xl="3">
           <mu-paper class="demo-paper" :z-depth="3" style="margin-top:15px;">
@@ -42,18 +42,65 @@
               </mu-col>
             </mu-row>
           </mu-paper>
-          <mu-paper
-            :key="1"
-            class="demo-paper"
-            :z-depth="3"
-            style="margin-top:15px;padding:15px 10px;"
-          >
+          <mu-paper :key="1" :z-depth="3" style="margin-top:15px">
             <mu-flex class="flex-wrapper" justify-content="center">
               <mu-flex class="flex-demo" justify-content="center">
                 <h3>书评区</h3>
               </mu-flex>
             </mu-flex>
-            <p>不想肝了</p>
+          </mu-paper>
+          <mu-paper :z-depth="3" style="margin-top:15px">
+            <mu-form style="padding: 15px 15px 0px 15px">
+              <mu-form-item label="撰写评论">
+                <mu-text-field v-model="value10" multi-line :rows="4" full-width></mu-text-field>
+              </mu-form-item>
+              <mu-form-item>
+                <mu-button color="primary" round >提交评论</mu-button>
+                <mu-button  round  color="grey500">取消回复</mu-button>
+              </mu-form-item>
+            </mu-form>
+          </mu-paper>
+          <mu-paper :z-depth="3" style="margin-top:15px">
+            <mu-card>
+              <mu-card-header title="bie" sub-title="2019-10-10 00:00">
+                <mu-avatar slot="avatar" color="teal">
+                  B
+                  <!--<img src="ava.jpg" />!-->
+                </mu-avatar>
+              </mu-card-header>
+              <mu-card-text style="padding:0px 30px;">
+                <p>我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行我觉得不行</p>
+              </mu-card-text>
+              <mu-card-actions>
+                <mu-flex justify-content="end">
+                  <mu-flex justify-content="center">
+                    <mu-button small color="primary">回复</mu-button>
+                  </mu-flex>
+                </mu-flex>
+              </mu-card-actions>
+            </mu-card>
+          </mu-paper>
+          <mu-paper :z-depth="3" style="margin-top:15px">
+            <mu-card>
+              <mu-card-header title="ZF" sub-title="2019-10-10 00:01">
+                <mu-avatar slot="avatar" color="red">
+                  <img src="./../assets/avatar.jpg" />
+                </mu-avatar>
+              </mu-card-header>
+              <mu-card-text style="padding:0px 30px;">
+                <mu-chip>
+                  <i>回复：“ 我觉得不行我觉得不行我觉得 ...... ”</i>
+                </mu-chip>
+                <p>我觉得你才不行</p>
+              </mu-card-text>
+              <mu-card-actions>
+                <mu-flex justify-content="end">
+                  <mu-flex justify-content="center">
+                    <mu-button small color="primary">回复</mu-button>
+                  </mu-flex>
+                </mu-flex>
+              </mu-card-actions>
+            </mu-card>
           </mu-paper>
         </mu-col>
       </mu-row>
