@@ -58,8 +58,8 @@
                     <img v-bind:src="v.cover" />
                   </mu-card-media>
                   <mu-card-actions>
-                    <mu-button color="secondary" full-width to="/archives/1"
-                      >详情</mu-button
+                    <mu-button color="secondary" 
+                       v-on:click="download(v.id)">下载</mu-button
                     >
                   </mu-card-actions>
                 </mu-card>
@@ -221,7 +221,50 @@ export default {
     Background
   },
   methods: {
-    
+    download:function(id){
+      function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(";");
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+      }
+      return "";
+    }
+    let token = getCookie("token")
+    if(token == ""){
+      alert("请先登录")
+      return
+    }
+    var formData = new FormData();
+      formData.append("title", this.comment);
+      formData.append("type", 2);
+      formData.append("raw", this.$route.params.id);
+      fetch(
+      this.$config.api_base + "volume/"+id,
+      {
+        method: "get",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          Authorization: "Bearer " + token
+        },
+      }
+    )
+      .then(data => data.json())
+      .then(data => {
+        
+        if (data.status === 0 && data.count != 0) {
+          console.log(data)
+          alert("成功，将扣除您一点下载点数！")
+          window.open(this.$config.api_base+"download?token="+data.data.token+"&hash="+data.data.hash+"&filename="+data.data.filename+"&id="+data.data.id,'_blank');
+        }
+      }).catch(data=>{
+        alert("失败，原因："+data.msg)
+      }
+        
+      );
+    },
     CreateComment() {
       function getCookie(cname) {
       var name = cname + "=";
@@ -258,7 +301,7 @@ export default {
         if (data.status === 0 && data.count != 0) {
           alert("回复成功")
           location.reload();
-          
+
         }
       });
     }
