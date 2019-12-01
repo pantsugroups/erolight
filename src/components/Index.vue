@@ -63,8 +63,8 @@
       </mu-row>
     </mu-container>
     <mu-container style="margin-top:15px;margin-bottom:15px;">
-      <mu-flex justify-content="center">
-        <mu-pagination raised circle :total="this.pages" :current.sync="current"></mu-pagination>
+      <mu-flex justify-content="center" v-on:click="flush()">
+        <mu-pagination raised circle :total="pages" :current.sync="current" ></mu-pagination>
       </mu-flex>
     </mu-container>
   </div>
@@ -77,8 +77,11 @@ import NavBar from "@/components/UI/NavBar.vue";
 import Menu from "@/components/UI/Menu.vue";
 export default {
   name: "Index",
-  created() {
-    fetch(this.$config.api_base + "novel/?page="+this.current+"&paeg_size=15", {
+  methods:{
+    flush:function(){
+      console.log(this.current)
+      this.novels = []
+      fetch(this.$config.api_base + "novel/?page="+this.current+"&page_size=16", {
       method: "get",
       credentials: "include"
     })
@@ -93,6 +96,28 @@ export default {
             this.novels.push(element);
           });
           this.pages = data.pages;
+          console.log(data)
+        }
+      });
+    }
+  },
+  created() {
+    fetch(this.$config.api_base + "novel/?page="+this.current+"&page_size=16", {
+      method: "get",
+      credentials: "include"
+    })
+      .then(data => data.json())
+      .then(data => {
+        if (data.status === 0 && data.count != 0) {
+          data.data.forEach(element => {
+            element.update_time = new Date(parseInt(element.update_at) * 1000)
+              .toLocaleString()
+              .replace(/:\d{1,2}$/, " ");
+            element.tag = element.tags.split("/");
+            this.novels.push(element);
+          });
+          this.pages = data.pages;
+          console.log(data)
         }
       });
   },
@@ -103,7 +128,8 @@ export default {
       },
       novels: [],
       current: 1,
-      pages:"",
+      pages:0,
+      
     };
   },
   components: {
