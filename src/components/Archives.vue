@@ -221,7 +221,47 @@ export default {
     Background
   },
   methods: {
-    CreateComment() {}
+    
+    CreateComment() {
+      function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(";");
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+      }
+      return "";
+    }
+    let token = getCookie("token")
+    if(token == ""){
+      alert("请先登录")
+      return
+    }
+      var formData = new FormData();
+      formData.append("title", this.comment);
+      formData.append("type", 2);
+      formData.append("raw", this.$route.params.id);
+      fetch(
+      this.$config.api_base + "comment/",
+      {
+        method: "post",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          Authorization: "Bearer " + token
+        },
+        body: formData
+      }
+    )
+      .then(data => data.json())
+      .then(data => {
+        if (data.status === 0 && data.count != 0) {
+          alert("回复成功")
+          location.reload();
+          
+        }
+      });
+    }
   }
 };
 </script>
