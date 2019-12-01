@@ -73,8 +73,8 @@
           raised
           circle
           :total="total"
-          :page-size="16"
           :current.sync="current"
+          ref="pagination"
         ></mu-pagination>
       </mu-flex>
     </mu-container>

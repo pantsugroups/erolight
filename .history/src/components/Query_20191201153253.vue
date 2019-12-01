@@ -14,10 +14,7 @@
           <mu-row>
             <mu-col span="8" offset="2" style="margin-top:30px;">
               <mu-form-item prop="input">
-                <mu-text-field
-                  v-model="form.input"
-                  placeholder="输入关键字..."
-                ></mu-text-field>
+                <mu-text-field v-model="form.input" placeholder="输入关键字..."></mu-text-field>
               </mu-form-item>
             </mu-col>
           </mu-row>
@@ -62,19 +59,17 @@
               <mu-card-text>
                 <mu-chip>
                   <mu-avatar :size="32">
-                    <mu-icon value="date_range"></mu-icon> </mu-avatar
-                  >2019-07-19 21:00:22
+                    <mu-icon value="date_range"></mu-icon>
+                  </mu-avatar>2019-07-19 21:00:22
                 </mu-chip>
                 <mu-chip>
                   <mu-avatar :size="32">
-                    <mu-icon value="local_offer"></mu-icon> </mu-avatar
-                  >奇幻
+                    <mu-icon value="local_offer"></mu-icon>
+                  </mu-avatar>奇幻
                 </mu-chip>
               </mu-card-text>
               <mu-card-actions>
-                <mu-button color="secondary" full-width to="/archives/1"
-                  >详情</mu-button
-                >
+                <mu-button color="secondary" full-width to="/archives/1">详情</mu-button>
               </mu-card-actions>
             </mu-card>
           </mu-paper>

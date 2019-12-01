@@ -45,22 +45,17 @@
                   <mu-avatar :size="32">
                     <mu-icon value="date_range"></mu-icon>
                   </mu-avatar>
-                  {{ n.update_time }}
+                  {{n.update_time}}
                 </mu-chip>
                 <mu-chip v-for="t in n.tag" :key="t">
                   <mu-avatar :size="32">
                     <mu-icon value="local_offer"></mu-icon>
                   </mu-avatar>
-                  {{ t }}
+                  {{t}}
                 </mu-chip>
               </mu-card-text>
               <mu-card-actions>
-                <mu-button
-                  color="secondary"
-                  full-width
-                  v-bind:to="'/archives/' + n.id"
-                  >详情</mu-button
-                >
+                <mu-button color="secondary" full-width v-bind:to="'/archives/'+n.id">详情</mu-button>
               </mu-card-actions>
             </mu-card>
           </mu-paper>
@@ -69,13 +64,7 @@
     </mu-container>
     <mu-container style="margin-top:15px;margin-bottom:15px;">
       <mu-flex justify-content="center" v-on:click="flush()">
-        <mu-pagination
-          raised
-          circle
-          :total="total"
-          :page-size="16"
-          :current.sync="current"
-        ></mu-pagination>
+        <mu-pagination raised circle :total="pages" :current.sync="current" ref="pagination"></mu-pagination>
       </mu-flex>
     </mu-container>
   </div>
@@ -109,7 +98,7 @@ export default {
               element.tag = element.tags.split("/");
               this.novels.push(element);
             });
-            this.total = data.all;
+            this.pages = data.pages;
             console.log(data);
           }
         });
@@ -133,7 +122,8 @@ export default {
             element.tag = element.tags.split("/");
             this.novels.push(element);
           });
-          this.total = data.all;
+          this.pages = data.pages;
+          window.pagination = this.$refs.pagination;
           console.log(data);
         }
       });
@@ -145,7 +135,7 @@ export default {
       },
       novels: [],
       current: 1,
-      total: 24
+      pages: 24
     };
   },
   components: {

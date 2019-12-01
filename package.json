@@ -13,6 +13,7 @@
     "muse-ui": "^3.0.2",
     "typeface-roboto": "^0.0.75",
     "vue": "^2.5.2",
+    "vue-cookies": "^1.5.13",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

@@ -1,9 +1,5 @@
 <template>
-  <mu-drawer
-    :open.sync="menu.open"
-    :docked="docked"
-    :right="position === 'right'"
-  >
+  <mu-drawer :open.sync="menu.open" :docked="docked" :right="position === 'right'">
     <mu-list>
       <mu-list-item @click="menu.open = false" button>
         <mu-icon value="keyboard_arrow_left"></mu-icon>

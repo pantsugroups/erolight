@@ -25,7 +25,7 @@
             </mu-card>
           </mu-paper>
         </mu-col>
-        <mu-col span="12" sm="12" md="6" lg="8" xl="9">
+        <mu-col span="12" sm="12" md="6" lg="8" xl="9" style="hig">
           <mu-paper
             class="demo-paper"
             :z-depth="3"

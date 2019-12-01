@@ -72,9 +72,9 @@
         <mu-pagination
           raised
           circle
-          :total="total"
-          :page-size="16"
+          :total="pages"
           :current.sync="current"
+          ref="pagination"
         ></mu-pagination>
       </mu-flex>
     </mu-container>
@@ -109,7 +109,7 @@ export default {
               element.tag = element.tags.split("/");
               this.novels.push(element);
             });
-            this.total = data.all;
+            this.pages = data.pages;
             console.log(data);
           }
         });
@@ -133,7 +133,7 @@ export default {
             element.tag = element.tags.split("/");
             this.novels.push(element);
           });
-          this.total = data.all;
+          this.pages = data.all;
           console.log(data);
         }
       });
@@ -145,7 +145,7 @@ export default {
       },
       novels: [],
       current: 1,
-      total: 24
+      pages: 24
     };
   },
   components: {
